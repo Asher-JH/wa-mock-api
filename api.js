@@ -9,19 +9,11 @@ app.use(
     extended: true,
   })
 );
-app.get("/api/health", (req, res) => {
+app.get("/api/health", (_req, res) => {
   res.send("Health ok!");
 });
 
-app.post("/api/getAllContactsInfo", (req, res) => {
-  console.log(req);
-  const deviceNumber = req.body?.deviceNumber;
-
-  if (!deviceNumber) {
-    res.status(400).json("Missing device number");
-    return;
-  }
-
+app.post("/api/getAllContactsInfo", (_req, res) => {
   const randStart = Math.floor(Math.random() * (99 - 1 + 1) + 1);
   const randEnd = Math.floor(Math.random() * (100 - randStart + 1) + randStart);
 
