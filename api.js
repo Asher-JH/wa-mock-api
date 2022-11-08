@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require("path");
 const mockContacts = require("./contacts-mock-data.json");
 const app = express();
 const port = 3000;
@@ -9,6 +10,13 @@ app.use(
     extended: true,
   })
 );
+
+app.use(express.static(__dirname + "/public"));
+
+app.get("/", (_req, res) => {
+  res.sendFile(path.join(__dirname + "/pages/index.html"));
+});
+
 app.get("/api/health", (_req, res) => {
   res.send("Health ok!");
 });
