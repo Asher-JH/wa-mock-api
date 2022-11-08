@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const cors = require("cors");
 const mockContacts = require("./contacts-mock-data.json");
 const app = express();
 const port = 3000;
@@ -10,6 +11,8 @@ app.use(
     extended: true,
   })
 );
+
+app.use(cors());
 
 app.use(express.static(__dirname + "/public"));
 

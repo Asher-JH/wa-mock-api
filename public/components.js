@@ -1,6 +1,6 @@
 const webhooksContainer = document.getElementById("web-hooks");
 
-const webhooks = [
+export const webhooks = [
   {
     method: "POST",
     title: "Add WhatsApp Instance",
@@ -89,7 +89,9 @@ function createForm(id, fields) {
                 ${fieldsHTML}
             </div>
 
-            <button id="btn-${id}" type="submit" class="font-light text-sm text-white bg-green-500 hover:bg-green-100 py-1 px-4 rounded-md ml-auto mt-auto">
+            <div id="status-box-${id}" class="mb-auto p-1 px-4"></div>
+
+            <button id="btn-${id}" type="submit" class="submit-btn font-light text-sm text-white bg-green-500 hover:bg-green-300 py-1 px-4 rounded-md ml-auto mt-auto">
                 Send
             </button>
         </form>
