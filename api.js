@@ -19,9 +19,7 @@ app.post("/api/getAllContactsInfo", (_req, res) => {
 
   const contacts = mockContacts.slice(randStart - 1, randEnd - 1);
 
-  res.status(200).json({
-    contacts,
-  });
+  res.status(200).json(contacts);
 });
 
 app.listen(port, () => {
