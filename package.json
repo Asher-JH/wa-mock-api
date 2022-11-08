@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx tailwindcss -i ./public/main.css -o ./public/output.css && node api.js",
     "build-styles": "npx tailwindcss -i ./public/main.css -o ./public/output.css --watch",
+    "build": "npx tailwindcss -i ./public/main.css -o ./public/output.css",
+    "start": "npm run build && node api.js",
     "dev": "nodemon api.js"
   },
   "keywords": [],
