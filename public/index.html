@@ -11,87 +11,12 @@
     <div class="w-full p-8">
       <div class="text-2xl font-bold text-blue">WhatsApp Mock Server</div>
 
+      <!-- Web hooks -->
       <div class="text-normal font-semibold my-6 underline">Web-Hooks</div>
-
-      <!-- Web hook #1 -->
-      <div class="border border-1 rounded-lg w-full p-2 mb-2">
-        <div class="flex flex-row justify-start items-center">
-          <div
-            class="p-1 px-2 text-sm text-bold text-white bg-green-500 rounded-lg mr-6"
-          >
-            POST
-          </div>
-          <div class="text-sm font-bold text-gray-700">
-            /trpc/hook.addWhatsappInstance
-          </div>
-        </div>
-      </div>
-
-      <div class="border border-1 rounded-lg w-full p-2">
-        <form
-          id="form-1"
-          class="w-full flex flex-row justify-start items-center"
-        >
-          <div>
-            <div class="flex flex-row">
-              <label
-                class="w-[140px] text-sm font-bold text-gray-700 flex flex-row justify-between items-center mr-6"
-                for="instanceHash"
-                >Instance Hash <span>:</span></label
-              >
-              <input
-                id="instanceHash"
-                name="instanceHash"
-                type="text"
-                class="text-sm border border-1 w-[300px] border-gray-400 p-1 rounded-md"
-                required
-                placeholder="##qwe$$plok"
-              />
-            </div>
-
-            <div class="flex flex-row mt-4">
-              <label
-                class="w-[140px] text-sm font-bold text-gray-700 flex flex-row justify-between items-center mr-6"
-                for="hostURL"
-                >Host URL <span>:</span></label
-              >
-              <input
-                id="hostURL"
-                name="hostURL"
-                type="text"
-                class="text-sm border border-1 w-[300px] border-gray-400 p-1 rounded-md"
-                required
-                placeholder="http://wa-server-instance.com"
-              />
-            </div>
-
-            <div class="flex flex-row mt-4">
-              <label
-                class="w-[140px] text-sm font-bold text-gray-700 flex flex-row justify-between items-center mr-6"
-                for="accessToken"
-                >Access Token <span>:</span></label
-              >
-              <input
-                id="accessToken"
-                name="accessToken"
-                type="text"
-                class="text-sm border border-1 w-[300px] border-gray-400 p-1 rounded-md"
-                required
-                placeholder="burrito-taco"
-              />
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            class="font-light text-sm text-white bg-green-500 py-1 px-4 rounded-md ml-auto mt-auto"
-          >
-            Send
-          </button>
-        </form>
-      </div>
+      <div id="web-hooks" class="w-full"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="components.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
