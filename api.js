@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const crypto = require("crypto");
 const cors = require("cors");
 const mockContacts = require("./contacts-mock-data.json");
 const app = express();
@@ -22,6 +23,17 @@ app.get("/", (_req, res) => {
 
 app.get("/api/health", (_req, res) => {
   res.send("Health ok!");
+});
+
+app.post("/api/generateSignature", (req, res) => {
+  const { secret, ...data } = req.body;
+  const hmac = crypto.createHmac("sha256", secret);
+  const digest = Buffer.from(
+    hmac.update(JSON.stringify(data)).digest("hex"),
+    "utf8"
+  );
+
+  res.status(200).json(digest.toString("utf-8"));
 });
 
 app.post("/api/getAllContactsInfo", (_req, res) => {

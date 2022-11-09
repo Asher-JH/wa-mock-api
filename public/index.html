@@ -14,14 +14,24 @@
       <!-- Web hooks -->
       <div class="w-full flex flex-row justify-between items-center">
         <div class="text-normal font-semibold my-6 underline">Web-Hooks</div>
-        <input
-          id="api-url-input"
-          name="api-url"
-          type="text"
-          value="http://localhost:5000"
-          placeholder="http://localhost:5000"
-          class="text-sm border border-1 w-[300px] border-gray-400 p-1 rounded-md"
-        />
+        <div>
+          <input
+            id="api-url-input"
+            name="api-url"
+            type="text"
+            value="http://localhost:5000"
+            placeholder="http://localhost:5000"
+            class="text-sm border border-1 w-[300px] border-gray-400 p-1 rounded-md"
+          />
+          <input
+            id="secret-input"
+            name="secret"
+            type="text"
+            value="burrito-chimichanga"
+            placeholder="secret"
+            class="text-sm border border-1 w-[300px] border-gray-400 p-1 rounded-md"
+          />
+        </div>
       </div>
       <div id="web-hooks" class="w-full"></div>
     </div>
