@@ -25,8 +25,8 @@ app.get("/api/health", (_req, res) => {
 });
 
 app.post("/api/getAllContactsInfo", (_req, res) => {
-  const randStart = Math.floor(Math.random() * (99 - 1 + 1) + 1);
-  const randEnd = Math.floor(Math.random() * (100 - randStart + 1) + randStart);
+  const randStart = Math.floor(Math.random() * (499 - 1 + 1) + 1);
+  const randEnd = Math.floor(Math.random() * (500 - randStart + 1) + randStart);
 
   const contacts = mockContacts.slice(randStart - 1, randEnd - 1);
 
