@@ -53,3 +53,4 @@ document.addEventListener("submit", (e) => {
       statusBox.innerHTML = `<div class="text-red-700 text-sm">Failed to fetch</div>`;
     });
 });
+
