@@ -37,14 +37,19 @@ document.addEventListener("submit", (e) => {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
-  }).then(async (res) => {
-    const payload = await res.json();
-    if (res.ok) {
-      statusBox.innerHTML = `<div class="text-green-500 font-bold">${res.status}</div> <div class="text-green-500">Success!</div>`;
-      e.target.reset();
-      return;
-    }
+  })
+    .then(async (res) => {
+      const payload = await res.json();
+      if (res.ok) {
+        statusBox.innerHTML = `<div class="text-green-500 font-bold">${res.status}</div> <div class="text-green-500">Success!</div>`;
+        e.target.reset();
+        return;
+      }
 
-    statusBox.innerHTML = `<div class="text-red-700 font-bold">${res.status}</div> <div class="text-red-700 text-sm">${payload.error.message}</div>`;
-  });
+      statusBox.innerHTML = `<div class="text-red-700 font-bold">${res.status}</div> <div class="text-red-700 text-sm">${payload.error.message}</div>`;
+    })
+    .catch((err) => {
+      console.log(err);
+      statusBox.innerHTML = `<div class="text-red-700 text-sm">Failed to fetch</div>`;
+    });
 });
