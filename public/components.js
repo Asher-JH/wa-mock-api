@@ -27,7 +27,7 @@ export const webhooks = [
   {
     method: "POST",
     title: "QR Scan Completed",
-    endpoint: "/trpc/hook.scanCompleted",
+    endpoint: "/trpc/hook.completedScanQR",
     fields: [
       {
         name: "instanceHash",

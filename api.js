@@ -7,12 +7,16 @@ const mockContacts = require("./contacts-mock-data.json");
 const app = express();
 const port = 3000;
 
+//Get the raw body
 app.use(
-  bodyParser({
-    extended: true,
+  bodyParser.json({
+    verify: (req, _res, buf) => {
+      if (buf && buf.length) {
+        req.rawBody = buf.toString("utf-8");
+      }
+    },
   })
 );
-
 app.use(cors());
 
 app.use(express.static(__dirname + "/public"));
@@ -36,7 +40,20 @@ app.post("/api/generateSignature", (req, res) => {
   res.status(200).json(digest.toString("utf-8"));
 });
 
-app.post("/api/getAllContactsInfo", (_req, res) => {
+app.post("/api/getAllContactsInfo", (req, res) => {
+  const signature = req.headers["x-signature-sha256"];
+  if (!signature || typeof signature !== "string") {
+    throw new Error("You do not have access");
+  }
+
+  const sig = Buffer.from(signature, "utf-8");
+  const hmac = crypto.createHmac("sha256", "burrito-chimichanga");
+  const buffer = Buffer.from(hmac.update(req.rawBody).digest("hex"), "utf-8");
+
+  if (sig.length !== buffer.length || !crypto.timingSafeEqual(buffer, sig)) {
+    throw new Error(`Invalid signature`);
+  }
+
   const randStart = Math.floor(Math.random() * (499 - 1 + 1) + 1);
   const randEnd = Math.floor(Math.random() * (500 - randStart + 1) + randStart);
 
